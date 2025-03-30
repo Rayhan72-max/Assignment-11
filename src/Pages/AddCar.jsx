@@ -11,9 +11,10 @@ const AddCar = (props) => {
         const registrationNumber = form.registrationNumber.value;
         const features = form.features.value;
         const description = form.description.value;
+        const bookingCount = form.bookingCount.value;
         const imageUrl = form.imageUrl.value;
         const location = form.location.value;
-        const car = { name, rentalPrice, availability, registrationNumber, features, description, imageUrl, location };
+        const car = { bookingCount,name, rentalPrice, availability, registrationNumber, features, description, imageUrl, location };
         console.log(car);
         axios.post('http://localhost:5000/addcar', car,{withCredentials:true})
             .then(res => {
@@ -38,6 +39,8 @@ const AddCar = (props) => {
                         <input name="availability" placeholder="Availability" className="w-full p-2 border rounded" />
                         <label className="fieldset-label">Registration Number</label>
                         <input name="registrationNumber" placeholder="Vehicle Registration Number" className="w-full p-2 border rounded" />
+                        <label className="fieldset-label">Booking Count</label>
+                        <input name="bookingCount" placeholder="booking count" className="w-full p-2 border rounded" />
                         <label className="fieldset-label">Features</label>
                         <input name="features" placeholder="Features (e.g., GPS, AC, etc.)" className="w-full p-2 border rounded" />
                         <textarea name="description" placeholder="Description" className="w-full p-2 border rounded"></textarea>
