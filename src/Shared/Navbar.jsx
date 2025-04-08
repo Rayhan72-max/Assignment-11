@@ -2,17 +2,17 @@ import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../Auth/AuthProvider';
 import { Tooltip } from 'react-tooltip'
-
+import logo from "../assets/carlogo.jpeg"
 const Navbar = (props) => {
     const { user, logOut, setTheme, theme } = useContext(AuthContext);
     const email = user.email;
 
     const routes = [
         { name: "Home", path: "/",role:"user" },
-        { name: "My Cars", path: `/mycampaign/${email}`,role:"admin" },
-        { name: "My Bookings", path: `/mydonation/${email}`,role:"admin"},
-        { name: "Add Cars", path: "/addcampaign",role:"admin"},
-        { name: "Avaiable Cars", path: "/allcampaigns",role:"user" }
+        { name: "My Cars", path: `/mycar/${email}`,role:"admin" },
+        { name: "My Bookings", path: `/mybookings`,role:"admin"},
+        { name: "Add Cars", path: "/addcar",role:"admin"},
+        { name: "Avaiable Cars", path: "/available",role:"user" }
     ]
     const handleLogOut = () => {
         logOut()
@@ -42,7 +42,11 @@ const Navbar = (props) => {
 
                         </ul>
                     </div>
-                    <a className="btn btn-ghost text-xl">CarHub</a>
+                    <div className='flex items-center h-12 w-12'>
+                        <img src={logo}/>
+                        <a className="btn btn-ghost text-xl">CarHub</a>    
+                    </div>
+                    
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">

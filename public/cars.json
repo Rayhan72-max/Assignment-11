@@ -1,83 +1,83 @@
 [
     {
-      "Car Image": "https://example.com/car1.jpg",
+      "ImageUrl": "https://example.com/car1.jpg",
       "Model": "Toyota Camry 2023",
-      "Daily_Price": "$45/day",
+      "Daily_Price": 45,
       "Availability": "Available",
       "Booking_count": 32,
-      "Date_Posted": "Added 2 days ago"
+      "Date_Posted": "01/09/2023"
     },
     {
-      "Car Image": "https://example.com/car2.jpg",
+      "ImageUrl": "https://example.com/car2.jpg",
       "Model": "Honda Civic 2022",
-      "Daily_Price": "$50/day",
+      "Daily_Price": 60,
       "Availability": "Unavailable",
       "Booking_count": 47,
-      "Date_Posted": "Added 5 days ago"
+      "Date_Posted": "08/09/2023"
     },
     {
-      "Car Image": "https://example.com/car3.jpg",
+      "ImageUrl": "https://example.com/car3.jpg",
       "Model": "BMW 3 Series 2023",
-      "Daily_Price": "$85/day",
+      "Daily_Price":90,
       "Availability": "Available",
       "Booking_count": 18,
-      "Date_Posted": "Added 1 day ago"
+      "Date_Posted": "03/09/2023"
     },
     {
-      "Car Image": "https://example.com/car4.jpg",
+      "ImageUrl": "https://example.com/car4.jpg",
       "Model": "Mercedes-Benz C-Class 2023",
-      "Daily_Price": "$90/day",
+      "Daily_Price": 66,
       "Availability": "Available",
       "Booking_count": 22,
-      "Date_Posted": "Added 3 days ago"
+      "Date_Posted": "13/09/2023"
     },
     {
-      "Car Image": "https://example.com/car5.jpg",
+      "ImageUrl": "https://example.com/car5.jpg",
       "Model": "Tesla Model 3 2023",
-      "Daily_Price": "$95/day",
+      "Daily_Price": 78,
       "Availability": "Unavailable",
       "Booking_count": 56,
-      "Date_Posted": "Added 7 days ago"
+      "Date_Posted": "11/09/2023"
     },
     {
-      "Car Image": "https://example.com/car6.jpg",
+      "ImageUrl": "https://example.com/car6.jpg",
       "Model": "Ford Mustang 2022",
-      "Daily_Price": "$75/day",
+      "Daily_Price": 60,
       "Availability": "Available",
       "Booking_count": 30,
-      "Date_Posted": "Added 4 days ago"
+      "Date_Posted": "06/09/2023"
     },
     {
-      "Car Image": "https://example.com/car7.jpg",
+      "ImageUrl": "https://example.com/car7.jpg",
       "Model": "Audi A4 2023",
-      "Daily_Price": "$80/day",
+      "Daily_Price": 900,
       "Availability": "Available",
       "Booking_count": 25,
-      "Date_Posted": "Added 6 days ago"
+      "Date_Posted": "04/08/2023"
     },
     {
-      "Car Image": "https://example.com/car8.jpg",
+      "ImageUrl": "https://example.com/car8.jpg",
       "Model": "Chevrolet Malibu 2022",
-      "Daily_Price": "$55/day",
+      "Daily_Price":90,
       "Availability": "Unavailable",
       "Booking_count": 40,
-      "Date_Posted": "Added 8 days ago"
+      "Date_Posted": "04/09/2023"  
     },
     {
-      "Car Image": "https://example.com/car9.jpg",
+      "ImageUrl": "https://example.com/car9.jpg",
       "Model": "Hyundai Sonata 2023",
-      "Daily_Price": "$48/day",
+      "Daily_Price": 80,
       "Availability": "Available",
       "Booking_count": 15,
-      "Date_Posted": "Added 2 days ago"
+      "Date_Posted": "24/09/2023"
     },
     {
-      "Car Image": "https://example.com/car10.jpg",
+      "ImageUrl": "https://example.com/car10.jpg",
       "Model": "Nissan Altima 2023",
-      "Daily_Price": "$52/day",
+      "Daily_Price": 77,
       "Availability": "Available",
       "Booking_count": 20,
-      "Date_Posted": "Added 5 days ago"
+      "Date_Posted": "22/09/2023"
     }
   ]
   

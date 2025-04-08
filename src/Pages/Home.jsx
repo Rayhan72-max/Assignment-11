@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import Banner from '../Components/Banner';
 import { IoCarSport } from "react-icons/io5";
 import { MdOutlinePriceChange } from "react-icons/md";
@@ -9,19 +9,26 @@ import axios from 'axios';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { FaRegArrowAltCircleRight } from "react-icons/fa";
+import { AuthContext } from '../Auth/AuthProvider';
+import { Link } from 'react-router-dom';
 AOS.init();
 
+const today = new Date();
 const Home = (props) => {
+    const { grid, setGrid } = useContext(AuthContext);
     const [isWide, setIsWide] = useState(false);
     const handleWide = () => {
         if (isWide === false) { setIsWide(true); }
     }
     const [cars, setCars] = useState([])
     useEffect(() => {
-        fetch("../../cars.json")
+        fetch("http://localhost:5000/allcars")
             .then(res => res.json())
             .then(data => setCars(data))
     }, [])
+    
+    
+
     console.log(cars)
     return (
         <div>
@@ -54,9 +61,13 @@ const Home = (props) => {
             </section>
             <section>
                 <h1 className='text-4xl font-bold text-center mt-5 text-blue-500'>Recent Listing</h1>
-
-                {<Card cars={cars}></Card>}
-
+                <div className={grid ? `grid grid-cols-3 gap-4` : "flex flex-col gap-4 mx-auto px-48"}>
+                {cars.map(car=>{
+                    const startDate = new Date(car.Date_Posted);
+                    const datePassed = today - startDate;
+                    const daysPassed = Math.floor(datePassed / (1000 * 60 * 60 * 24));
+                    return <Card key={car._id} cars={car} daysPassed={daysPassed} ></Card>})}
+                </div>
             </section>
 
 
@@ -130,14 +141,14 @@ const Home = (props) => {
                 </div>
             </section>
             
-            <div data-aos="fade-up">
+            <div data-aos="fade-up" className='hover:animate-pulse'>
             <section className='w-full bg-yellow-300 p-8 flex gap-16 items-center'>
                <div>
                <h1 className='text-2xl'>We Have <b>Recommendations</b> for you</h1>
                <p>Take 50% off when you spend $500 or more with code CARHUB25</p>     
                </div>
                <div>
-                <button className='btn bg-neutral rounded-full text-white p-4'>Dicover Now!</button>
+                <Link to={"/available"}><button className='btn bg-blue-400 font-bold'>Learn More!</button></Link>
                </div>
                <div>
                </div>

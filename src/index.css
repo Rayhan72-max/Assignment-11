@@ -2,3 +2,6 @@
 @plugin "daisyui"{
     themes: dark --default, dark --prefersdark, cupcake;
   }
+  @import '../node_modules/pikaday/css/pikaday.css'; 
+   
+  

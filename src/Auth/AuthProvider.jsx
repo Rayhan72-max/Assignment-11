@@ -8,6 +8,7 @@ export const AuthContext = createContext();
   
 
 const AuthProvider = ({children}) => {
+    const [grid,setGrid] = useState(true)
     const [theme,setTheme] = useState(false)
     const [loading,setLoading] = useState(true)
     const [user,setUser] = useState({});   
@@ -68,7 +69,9 @@ const forgetPass = (email) =>{
         setLoading,
         theme,
         setTheme,
-        setCampaigns
+        setCampaigns,
+        grid,
+        setGrid,
     }
 
     

@@ -12,6 +12,12 @@ import Unable from './Pages/Unable.jsx';
 import Home from './Pages/Home.jsx';
 import AddCar from './Pages/AddCar.jsx';
 import MyCar from './Pages/MyCars.jsx';
+import Available from './Pages/Available.jsx';
+import Details from './Pages/Details.jsx';
+import Login from './Pages/Login.jsx';
+import Register from './Pages/Register.jsx';
+import Private from './Pages/Private.jsx';
+import MyBookings from './Pages/MyBookings.jsx';
 
 
 const router = createBrowserRouter([
@@ -24,12 +30,33 @@ const router = createBrowserRouter([
     },
     {
       path:"/addcar",
-      element:<AddCar></AddCar>
+      element:<Private><AddCar></AddCar></Private>
     },
     {
-      path:"/mycar",
-      element:<MyCar></MyCar>
-    }
+      path:"/mycar/:email",
+      element:<Private><MyCar></MyCar></Private>
+    },
+    {
+      path:"/available",
+      element:<Available></Available>
+    },
+    {
+      path:"/details/:id",
+      element:<Details></Details>
+    },
+    {
+      path:"/login",
+      element:<Login></Login>
+    },
+    {
+      path:"/register",
+      element:<Register></Register>
+    },
+    {
+      path:"/mybookings",
+      element:<MyBookings></MyBookings>
+    },
+
     ]
   },
   {
