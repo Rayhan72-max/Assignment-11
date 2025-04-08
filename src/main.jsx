@@ -18,6 +18,7 @@ import Login from './Pages/Login.jsx';
 import Register from './Pages/Register.jsx';
 import Private from './Pages/Private.jsx';
 import MyBookings from './Pages/MyBookings.jsx';
+import LineChart from './Components/LineChart.jsx';
 
 
 const router = createBrowserRouter([
@@ -55,6 +56,10 @@ const router = createBrowserRouter([
     {
       path:"/mybookings",
       element:<MyBookings></MyBookings>
+    },
+    {
+      path:"/chart",
+      element:<LineChart></LineChart>
     },
 
     ]

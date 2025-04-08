@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../Auth/AuthProvider';
 import { Tooltip } from 'react-tooltip'
 import logo from "../assets/carlogo.jpeg"
+import axios from 'axios';
 const Navbar = (props) => {
     const { user, logOut, setTheme, theme } = useContext(AuthContext);
     const email = user.email;
@@ -16,6 +17,9 @@ const Navbar = (props) => {
     ]
     const handleLogOut = () => {
         logOut()
+        .then( 
+            axios.post('http://localhost:5000/logout',user,{withCredentials:true})
+        )
     }
     const handleTheme = () => {
         if (theme === true) {

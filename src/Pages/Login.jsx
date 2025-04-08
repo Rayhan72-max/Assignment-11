@@ -17,7 +17,10 @@ const Login = (props) => {
         const email= e.target.email.value;
         const user = {password,email}
         signIn(email,password)
-        .then(axios.post('http://localhost:5000/jwt',user,{withCredentials:true}))
+        .then((userCredentials)=>{
+            if(userCredentials.user){
+            axios.post('http://localhost:5000/jwt',user,{withCredentials:true})
+            }})
         .then(()=>navigate("/"))    
         .catch(err=>   
             Swal.fire({title: "Invalid Credential!",

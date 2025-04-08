@@ -19,11 +19,7 @@ const AuthProvider = ({children}) => {
 const signUp =(email,password)=> createUserWithEmailAndPassword(auth, email, password);
 
 
-const logOut =()=> signOut(auth).then(() => {
-  
-}).catch((error) => {
-  // An error happened.
-});
+const logOut =()=> signOut(auth)
 
 
 
@@ -36,10 +32,9 @@ useEffect(()=>{
     if (user) {
         setUser(user)
         
-      // User is signed in, see docs for a list of available properties
-      // https://firebase.google.com/docs/reference/js/auth.user
+      
       const uid = user.uid;
-      // ...
+      
     } else {
       setUser("")
       // User is signed out

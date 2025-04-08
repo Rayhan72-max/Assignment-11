@@ -54,12 +54,12 @@ const Details = (props) => {
                 <div className="card bg-base-100 w-full h-screen shadow-sm px-48">
                     <figure>
                         <img
-                            src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
+                            src={car.ImageUrl}
                             alt="Shoes" />
                     </figure>
                     <div className="card-body">
                         <h2 className="card-title">{car.Model}</h2>
-                        <h2>{car.Daily_Price}</h2>
+                        <h2>${car.Daily_Price}/day</h2>
                         <h2>{car.Availability}</h2>
                         <h2>{car.Booking_count}</h2>
                         <h2>Added {daysPassed} days</h2>

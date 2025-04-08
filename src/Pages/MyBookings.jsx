@@ -5,13 +5,17 @@ import Swal from 'sweetalert2';
 import { DayPicker } from "react-day-picker";
 import "react-day-picker/style.css";
 import axios from 'axios';
+import Chart from 'chart.js/auto';
 import { Link, useLocation } from 'react-router-dom';
+
+import LineChart from '../Components/LineChart';
 
 
 const MyBookings = (props) => {
     const location = useLocation();
     const today = new Date();
     const [cars,setCars] = useState([]);
+    console.log(cars.length)
  
     useEffect(()=>{
         axios.get("http://localhost:5000/bookings", { withCredentials: true })
@@ -162,6 +166,13 @@ const MyBookings = (props) => {
                     
                 </dialog>
             </div>
+            
+                
+            <div>
+                <h1 className='font-bold text-xl text-center'>Car VS Price</h1>
+            <LineChart data={cars}></LineChart>
+            </div>
+            
         </div>
     );
 };

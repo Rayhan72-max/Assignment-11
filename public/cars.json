@@ -1,6 +1,6 @@
 [
     {
-      "ImageUrl": "https://example.com/car1.jpg",
+      "ImageUrl": "https://i.ibb.co.com/spTY5F1j/car10.jpg",
       "Model": "Toyota Camry 2023",
       "Daily_Price": 45,
       "Availability": "Available",
@@ -8,7 +8,7 @@
       "Date_Posted": "01/09/2023"
     },
     {
-      "ImageUrl": "https://example.com/car2.jpg",
+      "ImageUrl": "https://i.ibb.co.com/X6GCZ3R/bugatti-centodieci.jpg",
       "Model": "Honda Civic 2022",
       "Daily_Price": 60,
       "Availability": "Unavailable",
@@ -16,7 +16,7 @@
       "Date_Posted": "08/09/2023"
     },
     {
-      "ImageUrl": "https://example.com/car3.jpg",
+      "ImageUrl": "https://i.ibb.co.com/JjM1DBvF/6-01.jpg",
       "Model": "BMW 3 Series 2023",
       "Daily_Price":90,
       "Availability": "Available",
@@ -24,7 +24,7 @@
       "Date_Posted": "03/09/2023"
     },
     {
-      "ImageUrl": "https://example.com/car4.jpg",
+      "ImageUrl": "https://i.ibb.co.com/LhQNf7d3/car11.jpg",
       "Model": "Mercedes-Benz C-Class 2023",
       "Daily_Price": 66,
       "Availability": "Available",
@@ -32,7 +32,7 @@
       "Date_Posted": "13/09/2023"
     },
     {
-      "ImageUrl": "https://example.com/car5.jpg",
+      "ImageUrl": "https://i.ibb.co.com/5gfz8n7B/car8.jpg",
       "Model": "Tesla Model 3 2023",
       "Daily_Price": 78,
       "Availability": "Unavailable",
@@ -40,7 +40,7 @@
       "Date_Posted": "11/09/2023"
     },
     {
-      "ImageUrl": "https://example.com/car6.jpg",
+      "ImageUrl": "https://i.ibb.co.com/DHJ2bMGV/car7.jpg",
       "Model": "Ford Mustang 2022",
       "Daily_Price": 60,
       "Availability": "Available",
@@ -48,7 +48,7 @@
       "Date_Posted": "06/09/2023"
     },
     {
-      "ImageUrl": "https://example.com/car7.jpg",
+      "ImageUrl": "https://i.ibb.co.com/LDRhNjkx/car6.jpg",
       "Model": "Audi A4 2023",
       "Daily_Price": 900,
       "Availability": "Available",
@@ -56,7 +56,7 @@
       "Date_Posted": "04/08/2023"
     },
     {
-      "ImageUrl": "https://example.com/car8.jpg",
+      "ImageUrl": "https://i.ibb.co.com/spTY5F1j/car10.jpg",
       "Model": "Chevrolet Malibu 2022",
       "Daily_Price":90,
       "Availability": "Unavailable",
@@ -72,7 +72,7 @@
       "Date_Posted": "24/09/2023"
     },
     {
-      "ImageUrl": "https://example.com/car10.jpg",
+      "ImageUrl": "https://i.ibb.co.com/X6GCZ3R/bugatti-centodieci.jpg",
       "Model": "Nissan Altima 2023",
       "Daily_Price": 77,
       "Availability": "Available",

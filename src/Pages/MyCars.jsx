@@ -36,7 +36,11 @@ const MyCar = (props) => {
 
     }
     const handleClose = () => {
-        const dialog = document.querySelector('dialog');
+        const dialog = document.querySelector("dialog");
+        dialog.close();
+    }
+    const handleClose1 = () => {
+        const dialog = document.getElementById("my_dialog")
         dialog.close();
     }
 
@@ -173,7 +177,7 @@ const MyCar = (props) => {
                                             <div className="mask mask-squircle h-12 w-12">
                                                 <img
                                                     src={car.ImageUrl}
-                                                    alt="" />
+                                                    alt={car.Model} />
                                             </div>
                                         </div>
                                         <div>
@@ -238,7 +242,9 @@ const MyCar = (props) => {
             </div>
             <div>
                 <dialog id='my_dialog' className='mx-auto modal p-4'>
+                
                     <div className='card modal-box bg-base-100 w-full max-w-sm shrink-0 shadow-2xl mx-auto'>
+                    <button onClick={handleClose1} className='btn btn-ghost w-fit font-bold relative bottom-8 right-8'>X</button>
                         <h1>Please Add Car!</h1>
                         <NavLink to={"/addcar"}><button className='btn bg-blue-300 font-bold text-black mt-2 animate-bounce'>Add Car</button></NavLink>
                     </div>
