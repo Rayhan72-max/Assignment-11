@@ -1,11 +1,14 @@
-import React, { use, useEffect, useState } from 'react';
+import React, { use, useContext, useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import Card from '../Components/Card'
 import Swal from 'sweetalert2';
 import axios from 'axios';
+import { AuthContext } from '../Auth/AuthProvider';
 
 const today = new Date();
 const Details = (props) => {
+    const user = useContext(AuthContext);
+    const email = user.user.email;
     const id = useParams();
     const [car, setCar] = useState({});
     useEffect(() => {
@@ -18,6 +21,7 @@ const Details = (props) => {
     const daysPassed = Math.floor(datePassed / (1000 * 60 * 60 * 24));
     const handleBooking = () => {
         const name = car.Model;
+        const {_id,...newCar} = car;
         Swal.fire({
             title: `Booked ${name}`,
             text: "Are you sure you want to book this car?",
@@ -28,26 +32,23 @@ const Details = (props) => {
             confirmButtonText: "Yes, Book it!"
           }).then((result) => {
             if (result.isConfirmed) {
-              axios.patch(`http://localhost:5000/bookings/${id.id}`,{car},{ withCredentials: true })
+              axios.post(`http://localhost:5000/bookings`,{...newCar,email},{ withCredentials: true })
               .then(res => {
-                
+                console.log(res)
                 if (res.data.modifiedCount > 0) {
                     Swal.fire({
                         title: "Booked!",
                         text: "Your car has been booked.",
                         icon: "success"
                       });
+                }})
+                .then(
+                    axios.patch(`http://localhost:5000/bookings/${id.id}`,{car},{withCredentials:true}) )
+                    
                 }
-                }
-              )
-              .catch(err => {
-                console.log(err);
-            })
-              
-            }
           });
     }
-    //console.log(car.length);
+    
     return (
         <div>
             <div className='flex justify-center my-4'>

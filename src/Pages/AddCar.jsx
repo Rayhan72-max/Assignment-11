@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { use, useContext } from 'react';
 import { AuthContext } from '../Auth/AuthProvider';
+import Swal from 'sweetalert2';
 
 const AddCar = (props) => {
     const { user } = useContext(AuthContext)
@@ -19,16 +20,15 @@ const AddCar = (props) => {
         const ImageUrl = Form.imageUrl.value;
         const Location = Form.location.value;
         const car = { Email,Date_Posted,Booking_Count, Model, Daily_Price, Availability, RegistrationNumber, Features, Description, ImageUrl, Location };
-        console.log(car);
-        console.log(Availability);
+        
         axios.post('http://localhost:5000/addcar', car, { withCredentials: true })
             .then(res => {
                 if (res.data.insertedId) {
-                    alert('Car Added Successfully')
+                    Swal.fire("Car added Successfully")
                     Form.reset()
                 }
             })
-            .catch(err => console.log(err))
+            
     }
     return (
         <div>

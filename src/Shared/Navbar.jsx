@@ -11,7 +11,7 @@ const Navbar = (props) => {
     const routes = [
         { name: "Home", path: "/",role:"user" },
         { name: "My Cars", path: `/mycar/${email}`,role:"admin" },
-        { name: "My Bookings", path: `/mybookings`,role:"admin"},
+        { name: "My Bookings", path: `/mybookings/${email}`,role:"admin"},
         { name: "Add Cars", path: "/addcar",role:"admin"},
         { name: "Avaiable Cars", path: "/available",role:"user" }
     ]

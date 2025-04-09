@@ -54,7 +54,7 @@ const router = createBrowserRouter([
       element:<Register></Register>
     },
     {
-      path:"/mybookings",
+      path:"/mybookings/:email",
       element:<MyBookings></MyBookings>
     },
     {

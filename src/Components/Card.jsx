@@ -8,7 +8,9 @@ const Card = ({cars,daysPassed}) => {
     const handleNavigate =()=>{
         if(cars.Availability !== "Available"){
             return Swal.fire("Car Not Available")
-        }else{
+        }else if(cars.Status ==="Confirmed"){
+            return Swal.fire("Car is Booked Already")
+        }else {
         navigate(`/details/${cars._id}`)
         }
     }

@@ -5,7 +5,7 @@ import { MdOutlineSystemUpdateAlt } from "react-icons/md";
 import { NavLink, useHref, useLocation, useNavigate, useParams } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import Swal from 'sweetalert2'
-import { AuthContext } from '../Auth/AuthProvider';
+
 import { reload } from 'firebase/auth';
 
 const MyCar = (props) => {

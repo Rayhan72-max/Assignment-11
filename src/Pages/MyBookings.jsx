@@ -1,4 +1,4 @@
-import React, { use, useEffect, useState } from 'react';
+import React, { use, useContext, useEffect, useState } from 'react';
 import { FaRegTrashAlt } from "react-icons/fa";
 import { CiCalendarDate } from "react-icons/ci";
 import Swal from 'sweetalert2';
@@ -6,19 +6,19 @@ import { DayPicker } from "react-day-picker";
 import "react-day-picker/style.css";
 import axios from 'axios';
 import Chart from 'chart.js/auto';
-import { Link, useLocation } from 'react-router-dom';
-
+import { Link, useLocation, useParams } from 'react-router-dom';
 import LineChart from '../Components/LineChart';
 
 
 const MyBookings = (props) => {
+    const params = useParams();
     const location = useLocation();
     const today = new Date();
     const [cars,setCars] = useState([]);
-    console.log(cars.length)
+    
  
     useEffect(()=>{
-        axios.get("http://localhost:5000/bookings", { withCredentials: true })
+        axios.get(`http://localhost:5000/bookings/${params.email}`, { withCredentials: true })
         .then(res=> {
         setCars(res.data);
     })}
