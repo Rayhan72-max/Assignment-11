@@ -5,6 +5,7 @@ import { MdOutlineSystemUpdateAlt } from "react-icons/md";
 import { NavLink, useHref, useLocation, useNavigate, useParams } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import Swal from 'sweetalert2'
+import moment from 'moment';
 
 import { reload } from 'firebase/auth';
 
@@ -46,22 +47,22 @@ const MyCar = (props) => {
 
     const handleDelete = (c) => {
 
-        axios.delete(`http://localhost:5000/deletecar/${c._id}`, { withCredentials: true })
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed){
+            axios.delete(`http://localhost:5000/deletecar/${c._id}`, { withCredentials: true })
             .then(res => {
-
                 if (res.data.deletedCount > 0) {
 
                     const remaining = cars.filter(ca => ca._id !== c._id);
-                    Swal.fire({
-                        title: "Are you sure?",
-                        text: "You won't be able to revert this!",
-                        icon: "warning",
-                        showCancelButton: true,
-                        confirmButtonColor: "#3085d6",
-                        cancelButtonColor: "#d33",
-                        confirmButtonText: "Yes, delete it!"
-                    }).then((result) => {
-                        if (result.isConfirmed) {
+
                             setCar(remaining);
                             Swal.fire({
                                 title: "Deleted!",
@@ -189,11 +190,11 @@ const MyCar = (props) => {
                                 <td>
                                     {car.Daily_Price}
                                 </td>
-                                <td>{car.Booking_Count}</td>
+                                <td>{car.Booking_count}</td>
                                 <td>
                                     {car.Availability}
                                 </td>
-                                <td></td>
+                                <td>{moment(car.Date_Posted).format("YYY/MM/DD ")}</td>
                                 <td>
                                     <button onClick={() => handleUpdate(car)}><MdOutlineSystemUpdateAlt /></button>
                                 </td>

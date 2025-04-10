@@ -42,11 +42,14 @@ const MyBookings = (props) => {
             cancelButtonText: "No!",
             reverseButtons: true
         }).then((result) => {
+            
             if (result.isConfirmed) {
-                axios.patch(`http://localhost:5000/cancelbookings/${car._id}`,{car},{ withCredentials: true })
+                console.log("confirmed")
+                axios.delete(`http://localhost:5000/cancelbookings/${car._id}`,{car},{ withCredentials: true })
                 .then(res=>{
-                    if(res.data.modifiedCount > 0){
-                        setCars(cars.filter(item => item._id !== car._id));
+                    if(res.data.deletedCount>0){
+                        const remaining = cars.filter(ca => ca._id !== car._id);
+                        setCars(remaining);
                     }
                 })
                 swalWithBootstrapButtons.fire({
@@ -71,24 +74,30 @@ const MyBookings = (props) => {
         const datepicker = document.getElementById("datepicker");
         datepicker.showModal();
     }
-    const handleSubmit = () => { 
+    
+
+    const handleSubmit = (e) => { 
         e.preventDefault();
+        console.log("handleskdjfffffff")
+        
         const id = location.state.id;
+        console.log(id)
         const start = e.target.start.value;
         const ending = e.target.ending.value;
-        const dates = {start, ending};
+        const dates = {start, ending}; 
         axios.patch(`http://localhost:5000/modifydate/${id}`,{dates},{ withCredentials: true })
         .then(res=>{
+            console.log("inside update")
             if(res.data.modifiedCount > 0){
                 setCars(cars.map(item => item._id === id ? {...item, BookingDate: start} : item));
             }
-        })
+        }) 
         .catch(err => console.log(err))
         
         console.log(start, ending);
         const datepicker = document.getElementById("datepicker");
         datepicker.close(); 
-    }
+    } 
     return (
         <div>
             <div className="overflow-x-auto">
@@ -108,8 +117,10 @@ const MyBookings = (props) => {
                         {/* row 1 */}
                         {
                             cars.map((car)=>{ 
-                        const datepassed = today - new Date(car.BookingDate);
-                        const daysPassed = Math.floor(datepassed / (1000 * 60 * 60 * 24));   
+                        const startDate = new Date(car.BookingDate);
+                        const datepassed = Math.abs(startDate-today);
+                        console.log("date passed",datepassed)
+                        const daysPassed = Math.ceil(datepassed / (1000 * 60 * 60 * 24));   
                         return <tr className='text-center hover:bg-cyan-200 font-bold'>
                             <td>
                                 <div className="flex items-center gap-3">
@@ -126,12 +137,12 @@ const MyBookings = (props) => {
                                 </div>
                             </td>
                             <td>
-                                {new Date(car.BookingDate).toLocaleDateString("en-US",{year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', hour12: false, minute:'2-digit'})}
+                                {car.BookingDate}
                                 
                             </td>
                             <td>{car.Daily_Price*daysPassed}</td>
                             <td>
-                                <Link to={`/details/${car._id}`}><button  className="btn btn-ghost btn-xs ">details</button></Link>
+                                <Link to={`/bookingdetails/${car._id}`}><button  className="btn btn-ghost btn-xs ">details</button></Link>
                             </td>
                             <td className='text-2xl text-center'>
                                 <button id='date' onClick={()=>handleDate(car)} className="btn bg-blue-500 text-white"><CiCalendarDate /> Modify Date</button>
@@ -169,7 +180,7 @@ const MyBookings = (props) => {
             
                 
             <div>
-                <h1 className='font-bold text-xl text-center'>Car VS Price</h1>
+               {cars.length>0?<h1 className='font-bold text-xl text-center'>Car VS Price</h1>:""} 
             <LineChart data={cars}></LineChart>
             </div>
             

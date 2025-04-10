@@ -6,7 +6,7 @@ import axios from 'axios';
 import { AuthContext } from '../Auth/AuthProvider';
 
 const today = new Date();
-const Details = (props) => {
+const BookingDetails = (props) => {
     const BookingDate = new Date();
     
     const user = useContext(AuthContext);
@@ -14,7 +14,7 @@ const Details = (props) => {
     const id = useParams();
     const [car, setCar] = useState({});
     useEffect(() => {
-        fetch(`http://localhost:5000/details/${id.id}`)
+        fetch(`http://localhost:5000/bookingdetails/${id.id}`)
             .then(res => res.json())
             .then(data => setCar(data))
     }, [])
@@ -59,7 +59,7 @@ const Details = (props) => {
                     <figure>
                         <img
                             src={car.ImageUrl}
-                            alt={car.Model} />
+                            alt="Shoes" />
                     </figure>
                     <div className="card-body">
                         <h2 className="card-title">{car.Model}</h2>
@@ -77,4 +77,4 @@ const Details = (props) => {
     );
 };
 
-export default Details;
+export default BookingDetails;

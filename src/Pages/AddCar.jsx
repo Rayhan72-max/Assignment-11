@@ -16,10 +16,10 @@ const AddCar = (props) => {
         const RegistrationNumber = Form.registrationNumber.value;
         const Features = Form.features.value;
         const Description = Form.description.value;
-        const Booking_Count = Form.bookingCount.value;
+        const Booking_count = Form.bookingCount.value;
         const ImageUrl = Form.imageUrl.value;
         const Location = Form.location.value;
-        const car = { Email,Date_Posted,Booking_Count, Model, Daily_Price, Availability, RegistrationNumber, Features, Description, ImageUrl, Location };
+        const car = { Email,Date_Posted,Booking_count, Model, Daily_Price, Availability, RegistrationNumber, Features, Description, ImageUrl, Location };
         
         axios.post('http://localhost:5000/addcar', car, { withCredentials: true })
             .then(res => {
@@ -47,16 +47,16 @@ const AddCar = (props) => {
                             <option value="Unavailable">Not Available</option>
                         </select>
                         <label className="fieldset-label">Registration Number</label>
-                        <input name="registrationNumber" placeholder="Vehicle Registration Number" className="w-full p-2 border rounded" />
+                        <input name="registrationNumber" placeholder="Vehicle Registration Number" className="w-full p-2 border rounded"  />
                         <label className="fieldset-label">Booking Count</label>
                         <input name="bookingCount" defaultValue={0} placeholder="booking count" className="w-full p-2 border rounded" />
                         <label className="fieldset-label">Features</label>
                         <input name="features" placeholder="Features (e.g., GPS, AC, etc.)" className="w-full p-2 border rounded" />
                         <textarea name="description" placeholder="Description" className="w-full p-2 border rounded"></textarea>
                         <label className="fieldset-label">Image</label>
-                        <input name="imageUrl" placeholder="Image URL" className="w-full p-2 border rounded" />
+                        <input name="imageUrl" placeholder="Image URL" className="w-full p-2 border rounded" required/>
                         <label className="fieldset-label">Location</label>
-                        <input name="location" placeholder="Location" className="w-full p-2 border rounded" />
+                        <input name="location" placeholder="Location" className="w-full p-2 border rounded" required/>
                         <button type="submit" className="w-full p-2 bg-blue-500 text-white rounded">Submit</button>
                     </form>
                 </div>

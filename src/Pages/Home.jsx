@@ -61,10 +61,10 @@ const Home = (props) => {
             </section>
             <section>
                 <h1 className='text-4xl font-bold text-center mt-5 text-blue-500'>Recent Listing</h1>
-                <div className={grid ? `grid grid-cols-3 gap-4` : "flex flex-col gap-4 mx-auto px-48"}>
+                <div className={"flex flex-col gap-4 mx-auto px-48 lg:grid grid-cols-3 gap-4"}>
                 {cars.map(car=>{
                     const startDate = new Date(car.Date_Posted);
-                    const datePassed = today - startDate;
+                    const datePassed = Math.abs(today - startDate);
                     const daysPassed = Math.floor(datePassed / (1000 * 60 * 60 * 24));
                     return <Card key={car._id} cars={car} daysPassed={daysPassed} ></Card>})}
                 </div>

@@ -21,13 +21,6 @@ const Navbar = (props) => {
             axios.post('http://localhost:5000/logout',user,{withCredentials:true})
         )
     }
-    const handleTheme = () => {
-        if (theme === true) {
-            setTheme(false)
-        } else {
-            setTheme(true)
-        }
-    }
 
     return (
         <div>
@@ -58,14 +51,7 @@ const Navbar = (props) => {
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    {user === "" ? <Link to={"/login"}><button className="btn font-semibold">Log In</button></Link> : <div data-tooltip-id="my-tooltip-inline" data-tooltip-content={user.displayName} className='flex flex-row items-center gap-2'> <img className='rounded-full w-[50px] h-[50px]' src={user.photoURL}></img> <button className="btn font-semibold" onClick={handleLogOut}>LogOut</button></div>}
-                    <input data-tooltip-id="my-tooltip-inline"
-                        data-tooltip-content="Change Theme" onClick={handleTheme} type="checkbox" defaultChecked className="ml-2 toggle border-indigo-600 bg-black text-white checked:bg-white checked:text-black checked:border-orange-500 " />
-                    <Tooltip
-                        id="my-tooltip-inline"
-                        style={{ backgroundColor: "rgb(0, 255, 30)", color: "#222" }}
-                    />
-
+                    {user === "" ? <Link to={"/login"}><button className="btn font-semibold">Log In</button></Link> : <div data-tooltip-id="my-tooltip-inline" data-tooltip-content={user.displayName} className='flex flex-row items-center gap-2'> <img className='rounded-full w-[50px] h-[50px]' src={user.photoURL}></img> <button className="btn font-semibold" onClick={handleLogOut}>LogOut</button></div>}                    
                 </div>
             </div>
         </div>

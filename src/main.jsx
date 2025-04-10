@@ -19,6 +19,7 @@ import Register from './Pages/Register.jsx';
 import Private from './Pages/Private.jsx';
 import MyBookings from './Pages/MyBookings.jsx';
 import LineChart from './Components/LineChart.jsx';
+import BookingDetails from './Pages/BookingDetails.jsx';
 
 
 const router = createBrowserRouter([
@@ -44,6 +45,10 @@ const router = createBrowserRouter([
     {
       path:"/details/:id",
       element:<Details></Details>
+    },
+    {
+      path:"/bookingdetails/:id",
+      element:<BookingDetails></BookingDetails>
     },
     {
       path:"/login",
