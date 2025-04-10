@@ -1,4 +1,4 @@
-# CarHub : A car rental rhop 
+# CarHub : A car rental shop 
 
 ## This is a car rental shop.This platform enables seamless car booking system.
 ## 🚀 Key Features :
