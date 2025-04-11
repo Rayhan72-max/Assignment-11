@@ -16,6 +16,7 @@ const MyBookings = (props) => {
     const params = useParams();
     const location = useLocation();
     const today = new Date();
+    const [availableCars,setAvailableCars] = useState([])
     const [cars,setCars] = useState([]);
     
  
@@ -25,7 +26,10 @@ const MyBookings = (props) => {
         setCars(res.data);
     })}
     ,[])
-    
+    useEffect(()=>{
+        axios.get(`https://assignment11-server-red.vercel.app/allcars`, { withCredentials: true })
+       .then(res=>setAvailableCars(res.data)) 
+   },[swap])
     
     const handleCancel = (car) => {
         const swalWithBootstrapButtons = Swal.mixin({
@@ -46,11 +50,18 @@ const MyBookings = (props) => {
         }).then((result) => {
             
             if (result.isConfirmed) {
+                const actualcar = availableCars.find(ca => ca.Model === car.Model);
+                const count = actualcar.Booking_count;
+                axios.patch(`https://assignment11-server-red.vercel.app/bookings/${actualcar._id}`,{Status:true,count},{withCredentials:true})
+                .then(res=>console.log(res))
                 axios.delete(`https://assignment11-server-red.vercel.app/cancelbookings/${car._id}`,{car},{ withCredentials: true })
                 .then(res=>{
                     if(res.data.deletedCount>0){
+                        
                         const remaining = cars.filter(ca => ca._id !== car._id);
                         setCars(remaining);
+                        
+                        
                     }
                 })
                 swalWithBootstrapButtons.fire({

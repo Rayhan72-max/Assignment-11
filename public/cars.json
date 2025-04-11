@@ -1,0 +1,102 @@
+[
+  {
+    "ImageUrl": "https://i.ibb.co.com/spTY5F1j/car10.jpg",
+    "Model": "Toyota Camry 2023",
+    "Daily_Price": 45,
+    "Availability": "Available",
+    "Booking_count": 32,
+    "Date_Posted": "01/09/2023",
+    "Description": "A reliable and fuel-efficient sedan with a comfortable interior.",
+    "Features": ["Bluetooth", "Backup Camera", "Cruise Control"]
+  },
+  {
+    "ImageUrl": "https://i.ibb.co.com/X6GCZ3R/bugatti-centodieci.jpg",
+    "Model": "Honda Civic 2022",
+    "Daily_Price": 60,
+    "Availability": "Unavailable",
+    "Booking_count": 47,
+    "Date_Posted": "08/09/2023",
+    "Description": "A compact car with sporty handling and advanced safety features.",
+    "Features": ["Lane Assist", "Apple CarPlay", "Heated Seats"]
+  },
+  {
+    "ImageUrl": "https://i.ibb.co.com/JjM1DBvF/6-01.jpg",
+    "Model": "BMW 3 Series 2023",
+    "Daily_Price": 90,
+    "Availability": "Available",
+    "Booking_count": 18,
+    "Date_Posted": "03/09/2023",
+    "Description": "A luxury sedan with powerful performance and premium features.",
+    "Features": ["Leather Seats", "Sunroof", "Navigation System"]
+  },
+  {
+    "ImageUrl": "https://i.ibb.co.com/LhQNf7d3/car11.jpg",
+    "Model": "Mercedes-Benz C-Class 2023",
+    "Daily_Price": 66,
+    "Availability": "Available",
+    "Booking_count": 22,
+    "Date_Posted": "13/09/2023",
+    "Description": "A sophisticated sedan with cutting-edge technology and comfort.",
+    "Features": ["Ambient Lighting", "Voice Control", "Adaptive Cruise Control"]
+  },
+  {
+    "ImageUrl": "https://i.ibb.co.com/5gfz8n7B/car8.jpg",
+    "Model": "Tesla Model 3 2023",
+    "Daily_Price": 78,
+    "Availability": "Unavailable",
+    "Booking_count": 56,
+    "Date_Posted": "11/09/2023",
+    "Description": "An electric car with impressive range and futuristic design.",
+    "Features": ["Autopilot", "Touchscreen Display", "Wireless Charging"]
+  },
+  {
+    "ImageUrl": "https://i.ibb.co.com/DHJ2bMGV/car7.jpg",
+    "Model": "Ford Mustang 2022",
+    "Daily_Price": 60,
+    "Availability": "Available",
+    "Booking_count": 30,
+    "Date_Posted": "06/09/2023",
+    "Description": "A classic muscle car with a powerful engine and iconic design.",
+    "Features": ["V8 Engine", "Sport Mode", "Keyless Entry"]
+  },
+  {
+    "ImageUrl": "https://i.ibb.co.com/LDRhNjkx/car6.jpg",
+    "Model": "Audi A4 2023",
+    "Daily_Price": 900,
+    "Availability": "Available",
+    "Booking_count": 25,
+    "Date_Posted": "04/08/2023",
+    "Description": "A premium sedan with advanced technology and a refined interior.",
+    "Features": ["Quattro AWD", "Virtual Cockpit", "Bang & Olufsen Sound System"]
+  },
+  {
+    "ImageUrl": "https://i.ibb.co.com/spTY5F1j/car10.jpg",
+    "Model": "Chevrolet Malibu 2022",
+    "Daily_Price": 90,
+    "Availability": "Unavailable",
+    "Booking_count": 40,
+    "Date_Posted": "04/09/2023",
+    "Description": "A midsize sedan with a smooth ride and modern features.",
+    "Features": ["Wi-Fi Hotspot", "Remote Start", "Blind Spot Monitoring"]
+  },
+  {
+    "ImageUrl": "https://example.com/car9.jpg",
+    "Model": "Hyundai Sonata 2023",
+    "Daily_Price": 80,
+    "Availability": "Available",
+    "Booking_count": 15,
+    "Date_Posted": "24/09/2023",
+    "Description": "A stylish sedan with excellent fuel efficiency and safety features.",
+    "Features": ["Smart Cruise Control", "Panoramic Sunroof", "Wireless Android Auto"]
+  },
+  {
+    "ImageUrl": "https://i.ibb.co.com/X6GCZ3R/bugatti-centodieci.jpg",
+    "Model": "Nissan Altima 2023",
+    "Daily_Price": 77,
+    "Availability": "Available",
+    "Booking_count": 20,
+    "Date_Posted": "22/09/2023",
+    "Description": "A comfortable sedan with all-wheel drive and advanced safety systems.",
+    "Features": ["ProPILOT Assist", "Remote Engine Start", "Dual-Zone Climate Control"]
+  }
+]

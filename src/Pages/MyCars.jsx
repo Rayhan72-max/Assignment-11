@@ -12,6 +12,7 @@ import { reload } from 'firebase/auth';
 const MyCar = (props) => {
     const location = useLocation();
     const params = useParams();
+    const [updateCar,setUpdateCar] = useState({})
     const [cars, setCar] = useState([]);
     const [reload, setReload] = useState(false);
 
@@ -21,17 +22,18 @@ const MyCar = (props) => {
             .then(res => {
                 if (res.data.length === 0) {
                     const dialogue = document.getElementById('my_dialog');
-                    dialogue.showModal();
+                   return dialogue.showModal();
                 }
                 setCar(res.data);
             
             })
             
-    }, [reload])
-    
+    }, [reload])    
 
     const handleUpdate = (car) => {
         location.state = { id: car._id };
+        axios.get(`https://assignment11-server-red.vercel.app/details/${location.state.id}`,{withCredentials:true})
+        .then(res=>setUpdateCar(res.data))
         const dialog = document.querySelector('dialog');
         dialog.showModal();
 
@@ -79,7 +81,6 @@ const MyCar = (props) => {
 
     const handleSubmit = (e) => {
         const id = location.state.id;
-        
         e.preventDefault();
         const dialog = document.querySelector('dialog');
         dialog.close();
@@ -105,7 +106,7 @@ const MyCar = (props) => {
 
                 const car = { bookingCount, name, rentalPrice, availability, registrationNumber, features, description, imageUrl, location };
                
-                axios.put(`https://assignment11-server-red.vercel.app/updatecar/${id}`, car, { withCredentials: true })
+                axios.patch(`https://assignment11-server-red.vercel.app/updatecar/${id}`, car, { withCredentials: true })
                     .then(res => {
                      
                         if (res.data.modifiedCount > 0) {
@@ -214,9 +215,9 @@ const MyCar = (props) => {
                         <div className="card-body">
                             <form onSubmit={handleSubmit} className="p-4 space-y-4 max-w-md ">
                                 <label className="fieldset-label">Model</label>
-                                <input name="model" placeholder="Car Model" className="w-full p-2 border rounded" />
+                                <input name="model" defaultValue={updateCar.Model} className="w-full p-2 border rounded" />
                                 <label className="fieldset-label">Rental Price</label>
-                                <input name="rentalPrice" placeholder="Daily Rental Price" className="w-full p-2 border rounded" />
+                                <input name="rentalPrice" defaultValue={updateCar.Daily_Price} className="w-full p-2 border rounded" />
                                 <label className="fieldset-label">Availability</label>
                                 <select name="availability" defaultValue={"select"} className="w-full p-2 border rounded" required>
                                     <option value="">Choose One</option>
@@ -226,14 +227,14 @@ const MyCar = (props) => {
                                 <label className="fieldset-label">Registration Number</label>
                                 <input name="registrationNumber" placeholder="Vehicle Registration Number" className="w-full p-2 border rounded" />
                                 <label className="fieldset-label">Booking Count</label>
-                                <input name="bookingCount" placeholder="booking count" className="w-full p-2 border rounded" />
+                                <input name="bookingCount" defaultValue={updateCar.Booking_count} className="w-full p-2 border rounded" />
                                 <label className="fieldset-label">Features</label>
-                                <input name="features" placeholder="Features (e.g., GPS, AC, etc.)" className="w-full p-2 border rounded" />
+                                <input name="features" defaultValue={updateCar.Features} className="w-full p-2 border rounded" />
                                 <textarea name="description" placeholder="Description" className="w-full p-2 border rounded"></textarea>
                                 <label className="fieldset-label">Image</label>
-                                <input name="imageUrl" placeholder="Image URL" className="w-full p-2 border rounded" />
+                                <input name="imageUrl" defaultValue={updateCar.ImageUrl} className="w-full p-2 border rounded" />
                                 <label className="fieldset-label">Location</label>
-                                <input name="location" placeholder="Location" className="w-full p-2 border rounded" />
+                                <input name="location" defaultValue={updateCar.Location} className="w-full p-2 border rounded" />
                                 <button type="submit" className="w-full p-2 bg-blue-500 text-white rounded">Submit</button>
                             </form>
                         </div>
