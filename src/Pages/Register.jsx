@@ -60,7 +60,7 @@ const Register = (props) => {
             signUp(email,password)
             .then((userCredential) => {
               // Signed up 
-              console.log("inside signUp")
+             
               updateProfile(auth.currentUser,{
                 displayName:name,photoURL:photoUrl
               })
@@ -70,7 +70,7 @@ const Register = (props) => {
             .catch((error) => {
               const errorCode = error.code;
               const errorMessage = error.message;
-             console.log(errorMessage)
+
               // ..
             });
             

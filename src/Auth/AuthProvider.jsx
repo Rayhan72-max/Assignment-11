@@ -2,12 +2,14 @@ import React, { createContext, useEffect, useState } from 'react';
 import { getAuth, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, sendPasswordResetEmail, GoogleAuthProvider, signInWithPopup, updateProfile, signOut } from "firebase/auth";
 import { initializeApp } from "firebase/app";
 import { auth } from '../../firebase.config';
+import { useNavigate } from 'react-router-dom';
 
 export const AuthContext = createContext();
   const provider =  new GoogleAuthProvider();
   
 
 const AuthProvider = ({children}) => {
+    
     const [grid,setGrid] = useState(true)
     const [loading,setLoading] = useState(true)
     const [user,setUser] = useState({});   
@@ -36,6 +38,8 @@ useEffect(()=>{
       
     } else {
       setUser("")
+
+      
       // User is signed out
       // ...
     }
@@ -64,6 +68,7 @@ const forgetPass = (email) =>{
         setCampaigns,
         grid,
         setGrid,
+        
     }
 
     

@@ -17,18 +17,18 @@ const MyCar = (props) => {
 
 
     useEffect(() => {
-        axios.get(`http://localhost:5000/mycar/${params.email}`, { withCredentials: true })
+        axios.get(`https://assignment11-server-red.vercel.app/mycar/${params.email}`, { withCredentials: true })
             .then(res => {
                 if (res.data.length === 0) {
                     const dialogue = document.getElementById('my_dialog');
                     dialogue.showModal();
                 }
                 setCar(res.data);
-                console.log("response is", res.data);
+            
             })
-            .catch(err => console.log(err))
+            
     }, [reload])
-    console.log("main cars", cars);
+    
 
     const handleUpdate = (car) => {
         location.state = { id: car._id };
@@ -57,7 +57,7 @@ const MyCar = (props) => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed){
-            axios.delete(`http://localhost:5000/deletecar/${c._id}`, { withCredentials: true })
+            axios.delete(`https://assignment11-server-red.vercel.app/deletecar/${c._id}`, { withCredentials: true })
             .then(res => {
                 if (res.data.deletedCount > 0) {
 
@@ -74,7 +74,7 @@ const MyCar = (props) => {
 
                 }
             })
-            .catch(err => console.log(err))
+          
     }
 
     const handleSubmit = (e) => {
@@ -104,16 +104,16 @@ const MyCar = (props) => {
                 const location = form.location.value;
 
                 const car = { bookingCount, name, rentalPrice, availability, registrationNumber, features, description, imageUrl, location };
-                console.log("car id is", id);
-                axios.put(`http://localhost:5000/updatecar/${id}`, car, { withCredentials: true })
+               
+                axios.put(`https://assignment11-server-red.vercel.app/updatecar/${id}`, car, { withCredentials: true })
                     .then(res => {
-                        console.log("response is", res.data);
+                     
                         if (res.data.modifiedCount > 0) {
                             form.reset();
                             setReload(!reload);
                         }
                     })
-                    .catch(err => console.log(err))
+                    
 
 
                 Swal.fire("Saved!", "", "success");
@@ -132,7 +132,6 @@ const MyCar = (props) => {
         }
     }
     const shortPrice = () => {
-        console.log("short price");
         const sortedCars = [...cars].sort((a, b) => a.rentalPrice - b.rentalPrice);
         setCar(sortedCars);
     }
@@ -194,7 +193,7 @@ const MyCar = (props) => {
                                 <td>
                                     {car.Availability}
                                 </td>
-                                <td>{moment(car.Date_Posted).format("YYY/MM/DD ")}</td>
+                                <td>{moment(car.Date_Posted).format("YYYY/MM/DD HH/ss")}</td>
                                 <td>
                                     <button onClick={() => handleUpdate(car)}><MdOutlineSystemUpdateAlt /></button>
                                 </td>

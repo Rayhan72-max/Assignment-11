@@ -11,13 +11,13 @@ const Available = (props) => {
     const [searchTerm, setSearchTerm] = useState("");
     useEffect(() => {
         //
-        axios.get(`http://localhost:5000/available?search=${searchTerm}`)     
+        axios.get(`https://assignment11-server-red.vercel.app/available?search=${searchTerm}`)     
         .then(res => {
             setCars(res.data);
         })
         
     }, [searchTerm]);
-    console.log("cars outside",newCars)
+    
     
     const handlePress = (e) => {
         if (e.key === 'Enter') {
@@ -35,11 +35,11 @@ const Available = (props) => {
             
           return  setCars(newCars.sort((a, b) => a.Daily_Price - b.Daily_Price));
         } else {
-            console.log("highest price")
+           
            return setCars(newCars.sort((a, b) => b.Daily_Price - a.Daily_Price));
         }
     } 
-    console.log("going down")
+    
     return (
         <div>
             

@@ -4,54 +4,35 @@ import Card from '../Components/Card'
 import Swal from 'sweetalert2';
 import axios from 'axios';
 import { AuthContext } from '../Auth/AuthProvider';
+import moment from 'moment';
 
 const today = new Date();
 const BookingDetails = (props) => {
     const BookingDate = new Date();
-    
+    const [handle, setHandle] = useState([]);
     const user = useContext(AuthContext);
     const email = user.user.email;
     const id = useParams();
     const [car, setCar] = useState({});
     useEffect(() => {
-        fetch(`http://localhost:5000/bookingdetails/${id.id}`)
+        fetch(`https://assignment11-server-red.vercel.app/bookingdetails/${id.id}`)
             .then(res => res.json())
             .then(data => setCar(data))
     }, [])
+
+
+
+    const beginingDate = new Date(car.BookingDate);
+    const totalpassed = Math.abs(beginingDate - today);
+    const totalDays = Math.ceil(totalpassed / (1000 * 60 * 60 * 24));
+
+
+
     const startDate = new Date(car.Date_Posted);
-    console.log(startDate)
     const datePassed = today - startDate;
     const daysPassed = Math.floor(datePassed / (1000 * 60 * 60 * 24));
-    const handleBooking = () => {
-        const name = car.Model;
-        const {_id,...newCar} = car;
-        Swal.fire({
-            title: `Booked ${name}`,
-            text: "Are you sure you want to book this car?",
-            icon: "warning",
-            showCancelButton: true,
-            confirmButtonColor: "#3085d6",
-             cancelButtonColor: "#d33",
-            confirmButtonText: "Yes, Book it!"
-          }).then((result) => {
-            if (result.isConfirmed) {
-              axios.post(`http://localhost:5000/bookings`,{...newCar,email,BookingDate},{ withCredentials: true })
-              .then(res => {
-                console.log(res)
-                if (res.data.modifiedCount > 0) {
-                    Swal.fire({
-                        title: "Booked!",
-                        text: "Your car has been booked.",
-                        icon: "success"
-                      });
-                }})
-                .then(
-                    axios.patch(`http://localhost:5000/bookings/${id.id}`,{car},{withCredentials:true}) )
-                    
-                }
-          });
-    }
-    
+
+
     return (
         <div>
             <div className='flex justify-center my-4'>
@@ -63,13 +44,11 @@ const BookingDetails = (props) => {
                     </figure>
                     <div className="card-body">
                         <h2 className="card-title">{car.Model}</h2>
-                        <h2>${car.Daily_Price}/day</h2>
-                        <h2>{car.Availability}</h2>
+                        <h2>Daily Price : {car.Daily_Price}</h2>
+                        <h2>Total Cost :{totalDays*car.Daily_Price} </h2>
                         <h2>Booking Count : {car.Booking_count}</h2>
+                        <h2>Booking Date : {moment(car.BookingDate).format("YYYY/MM/DD HH:ss")}</h2>
                         <h2>Added {daysPassed} days</h2>
-                        <div className="card-actions justify-end">
-                            <button onClick={handleBooking} className="btn btn-primary">Book Now</button>
-                        </div>
                     </div>
                 </div>
             </div>

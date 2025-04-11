@@ -8,8 +8,8 @@ import axios from 'axios';
 
 const Login = (props) => {
     const navigate = useNavigate();
-    const gitprovider = new GithubAuthProvider();
-    const {signIn,forgetPass,auth,provider} = useContext(AuthContext);
+    
+    const {signIn,auth,provider} = useContext(AuthContext);
     const handleLogin =(e)=>{
         e.preventDefault()
          
@@ -19,7 +19,7 @@ const Login = (props) => {
         signIn(email,password)
         .then((userCredentials)=>{
             if(userCredentials.user){
-            axios.post('http://localhost:5000/jwt',user,{withCredentials:true})
+            axios.post('https://assignment11-server-red.vercel.app/jwt',user,{withCredentials:true})
             }})
         .then(()=>navigate("/"))    
         .catch(err=>   
@@ -28,21 +28,12 @@ const Login = (props) => {
                         text:"invalid password or email"
                         }))
         
-    }
-
-    const handleForget = () =>{
-        const email = document.getElementById("form").email.value;
-        if(email !== ""){}
-        navigate(`/forget/${email}`)
-    }
-    
+    }    
     const handleGoogle=()=>{
         signInWithPopup(auth,provider)
         .then(()=>navigate("/"))
     }
-    const handleGithub=()=>{
-        signInWithPopup(auth,gitprovider)
-    }
+    
 
     return (
         <div>
@@ -70,9 +61,9 @@ const Login = (props) => {
                             </div>
                             <div className="form-control mt-6 flex flex-col">
                                <button type='submit' className="btn btn-primary">Login</button>
-                               <button onClick={handleForget} className='btn btn-primary w-full mt-2'>Forget Password</button>
+                               
                                 <button className='btn btn-outline btn-success  text-3xl text-yellow-400 font-bold p-2 mt-2' onClick={handleGoogle}>Google Login</button>
-                                <button className='btn bg-black  text-3xl text-white font-bold p-2 mt-2' onClick={handleGithub}>Github Login</button>
+                                
                                 <Link className='btn btn-primary mt-2' to="/register"><button >SignUp</button></Link>
                             </div>
                         </form>

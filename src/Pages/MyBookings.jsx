@@ -8,9 +8,11 @@ import axios from 'axios';
 import Chart from 'chart.js/auto';
 import { Link, useLocation, useParams } from 'react-router-dom';
 import LineChart from '../Components/LineChart';
+import moment from 'moment';
 
 
 const MyBookings = (props) => {
+    const [swap,setSwap] = useState(true);
     const params = useParams();
     const location = useLocation();
     const today = new Date();
@@ -18,7 +20,7 @@ const MyBookings = (props) => {
     
  
     useEffect(()=>{
-        axios.get(`http://localhost:5000/bookings/${params.email}`, { withCredentials: true })
+        axios.get(`https://assignment11-server-red.vercel.app/bookings/${params.email}`, { withCredentials: true })
         .then(res=> {
         setCars(res.data);
     })}
@@ -44,8 +46,7 @@ const MyBookings = (props) => {
         }).then((result) => {
             
             if (result.isConfirmed) {
-                console.log("confirmed")
-                axios.delete(`http://localhost:5000/cancelbookings/${car._id}`,{car},{ withCredentials: true })
+                axios.delete(`https://assignment11-server-red.vercel.app/cancelbookings/${car._id}`,{car},{ withCredentials: true })
                 .then(res=>{
                     if(res.data.deletedCount>0){
                         const remaining = cars.filter(ca => ca._id !== car._id);
@@ -77,29 +78,46 @@ const MyBookings = (props) => {
     
 
     const handleSubmit = (e) => { 
-        e.preventDefault();
-        console.log("handleskdjfffffff")
-        
+        e.preventDefault(); 
         const id = location.state.id;
-        console.log(id)
         const start = e.target.start.value;
         const ending = e.target.ending.value;
         const dates = {start, ending}; 
-        axios.patch(`http://localhost:5000/modifydate/${id}`,{dates},{ withCredentials: true })
+        axios.patch(`https://assignment11-server-red.vercel.app/modifydate/${id}`,{dates},{ withCredentials: true })
         .then(res=>{
-            console.log("inside update")
+           
             if(res.data.modifiedCount > 0){
                 setCars(cars.map(item => item._id === id ? {...item, BookingDate: start} : item));
             }
         }) 
-        .catch(err => console.log(err))
         
-        console.log(start, ending);
+        
+       
         const datepicker = document.getElementById("datepicker");
         datepicker.close(); 
     } 
+
+    const shortPrice = (e) => {
+        setSwap(!swap);
+        const value = e.target.value;
+        if (value === "lowest price") {
+            
+          return  setCars(cars.sort((a, b) => a.Daily_Price - b.Daily_Price));
+        } else {
+           
+           return setCars(cars.sort((a, b) => b.Daily_Price - a.Daily_Price));
+        }
+    }
+
     return (
         <div>
+            <div className='flex justify-end items-center my-4'>
+            {<select onChange={shortPrice} className="border rounded p-2 mr-2">
+                <option value="default">Sort By Price</option>
+                <option value="lowest price">Lowest Price</option>
+                <option value="highest price">Highest Price</option>                
+            </select>}
+            </div>
             <div className="overflow-x-auto">
                 <table className="table">
                     {/* head */}
@@ -119,7 +137,7 @@ const MyBookings = (props) => {
                             cars.map((car)=>{ 
                         const startDate = new Date(car.BookingDate);
                         const datepassed = Math.abs(startDate-today);
-                        console.log("date passed",datepassed)
+                      
                         const daysPassed = Math.ceil(datepassed / (1000 * 60 * 60 * 24));   
                         return <tr className='text-center hover:bg-cyan-200 font-bold'>
                             <td>
@@ -137,7 +155,7 @@ const MyBookings = (props) => {
                                 </div>
                             </td>
                             <td>
-                                {car.BookingDate}
+                                {moment(car.BookingDate).format("YYYY/MM/DD HH/ss")}
                                 
                             </td>
                             <td>{car.Daily_Price*daysPassed}</td>

@@ -22,14 +22,11 @@ const Home = (props) => {
     }
     const [cars, setCars] = useState([])
     useEffect(() => {
-        fetch("http://localhost:5000/allcars")
+        fetch("https://assignment11-server-red.vercel.app/allcars")
             .then(res => res.json())
             .then(data => setCars(data))
     }, [])
     
-    
-
-    console.log(cars)
     return (
         <div>
             <Banner></Banner>
@@ -61,7 +58,7 @@ const Home = (props) => {
             </section>
             <section>
                 <h1 className='text-4xl font-bold text-center mt-5 text-blue-500'>Recent Listing</h1>
-                <div className={"flex flex-col gap-4 mx-auto px-48 lg:grid grid-cols-3 gap-4"}>
+                <div className={"flex flex-col gap-4 mx-auto px-12 lg:grid grid-cols-3 gap-4 "}>
                 {cars.map(car=>{
                     const startDate = new Date(car.Date_Posted);
                     const datePassed = Math.abs(today - startDate);

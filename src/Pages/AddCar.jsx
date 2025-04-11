@@ -14,14 +14,15 @@ const AddCar = (props) => {
         const Daily_Price = Form.rentalPrice.value;
         const Availability = Form.availability.value;
         const RegistrationNumber = Form.registrationNumber.value;
-        const Features = Form.features.value;
+        const featuresArray = Form.features.value.split(",");
+        const Features = featuresArray;
         const Description = Form.description.value;
         const Booking_count = Form.bookingCount.value;
         const ImageUrl = Form.imageUrl.value;
         const Location = Form.location.value;
         const car = { Email,Date_Posted,Booking_count, Model, Daily_Price, Availability, RegistrationNumber, Features, Description, ImageUrl, Location };
         
-        axios.post('http://localhost:5000/addcar', car, { withCredentials: true })
+        axios.post('https://assignment11-server-red.vercel.app/addcar', car, { withCredentials: true })
             .then(res => {
                 if (res.data.insertedId) {
                     Swal.fire("Car added Successfully")
@@ -51,7 +52,7 @@ const AddCar = (props) => {
                         <label className="fieldset-label">Booking Count</label>
                         <input name="bookingCount" defaultValue={0} placeholder="booking count" className="w-full p-2 border rounded" />
                         <label className="fieldset-label">Features</label>
-                        <input name="features" placeholder="Features (e.g., GPS, AC, etc.)" className="w-full p-2 border rounded" />
+                        <input name="features" placeholder="Features (e.g., 'GPS', 'AC','disck' etc.)" className="w-full p-2 border rounded" />
                         <textarea name="description" placeholder="Description" className="w-full p-2 border rounded"></textarea>
                         <label className="fieldset-label">Image</label>
                         <input name="imageUrl" placeholder="Image URL" className="w-full p-2 border rounded" required/>

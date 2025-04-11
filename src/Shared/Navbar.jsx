@@ -1,10 +1,11 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../Auth/AuthProvider';
 import { Tooltip } from 'react-tooltip'
 import logo from "../assets/carlogo.jpeg"
 import axios from 'axios';
 const Navbar = (props) => {
+    const navigate = useNavigate();
     const { user, logOut, setTheme, theme } = useContext(AuthContext);
     const email = user.email;
 
@@ -18,7 +19,9 @@ const Navbar = (props) => {
     const handleLogOut = () => {
         logOut()
         .then( 
-            axios.post('http://localhost:5000/logout',user,{withCredentials:true})
+            axios.post('https://assignment11-server-red.vercel.app/logout',user,{withCredentials:true})
+            .then(navigate("/"))
+            
         )
     }
 
