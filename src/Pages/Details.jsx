@@ -100,7 +100,7 @@ const Details = (props) => {
                         <h2 className="card-title text-xl">{car.Model}</h2>
                         
                         <div className='flex gap-2'>
-                        {features.map(f=><h1 className=" bg-cyan-500 rounded-lg p-1">{f}</h1>)}  
+                        {features.map(f=><h1 className="tab-active bg-blue-500 text-white rounded-lg p-1">{f}</h1>)}  
                         </div>
                         <h2 className='font-bold'>{car.Description}</h2>
                         <h2>${car.Daily_Price}/day</h2>

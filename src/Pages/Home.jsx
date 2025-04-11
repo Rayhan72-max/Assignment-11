@@ -73,9 +73,9 @@ const Home = (props) => {
 
                 <h1 class="text-5xl font-bold bg-gradient-to-br from-blue-600 to-cyan-500 text-transparent bg-clip-text text-center p-2">Reviews</h1>
                 <div className='flex items-center gap-24'>
-                    <div className={isWide ? 'grid grid-cols-3 gap-2 p-4 text-black' : "stack stack-start size-90 ml-2 mb-2"} >
+                    <div className={isWide ? 'flex flex-col mx-auto lg:grid grid-cols-3 gap-2 p-2 text-black' : "stack stack-start size-90 ml-2 mb-2"} >
 
-                        <div className="card w-full h-full bg-base-100 card-lg shadow-sm">
+                        <div className="card w-96 bg-base-100 card-lg shadow-sm">
                             <div className="card-body">
                                 <h2 className="card-title">Rakib Ahmed</h2>
                                 <div className="rating">

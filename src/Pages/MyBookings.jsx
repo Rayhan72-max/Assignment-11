@@ -53,7 +53,7 @@ const MyBookings = (props) => {
                 const actualcar = availableCars.find(ca => ca.Model === car.Model);
                 const count = actualcar.Booking_count;
                 axios.patch(`https://assignment11-server-red.vercel.app/bookings/${actualcar._id}`,{Status:true,count},{withCredentials:true})
-                .then(res=>console.log(res))
+                
                 axios.delete(`https://assignment11-server-red.vercel.app/cancelbookings/${car._id}`,{car},{ withCredentials: true })
                 .then(res=>{
                     if(res.data.deletedCount>0){

@@ -55,7 +55,7 @@ const Available = (props) => {
             </select>}
             <input type="checkbox" onClick={handleGrid} defaultChecked className="toggle" />
             </div>
-            <div  className={grid ? `grid grid-cols-3 gap-4` : "flex flex-col gap-4 mx-auto px-48"}>
+            <div  className={grid ? `flex flex-col gap-2 lg:grid grid-cols-3 gap-4` : "flex flex-col gap-4 mx-auto px-48"}>
             {newCars.map((car) => {
             const today = new Date();
             const startDate = new Date(car.Date_Posted);

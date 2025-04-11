@@ -44,7 +44,7 @@ const Navbar = (props) => {
                     </div>
                     <div className='flex items-center h-12 w-12'>
                         <img src={logo}/>
-                        <a className="btn btn-ghost text-xl">CarHub</a>    
+                        <Link to={"/"}><button className="btn btn-ghost text-xl">CarHub</button></Link>    
                     </div>
                     
                 </div>
